@@ -5,8 +5,9 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User'); // Assuming you have a User model defined
 const JWT_SECRET = 'Harryisagoodboy@1314';  //sign the token with secret
+const fetchuser = require('../middleware/fetchuser');
 
-//create a user using POST:"/api/auth/createuser" ,No login required.
+//Router:1 create a user using POST:"/api/auth/createuser" ,No login required.
 router.post('/createuser', [
     body('name', "Enter a valid name").isLength({ min: 3 }),
     body('email', "Enter a valid email").isEmail(),
@@ -44,7 +45,7 @@ router.post('/createuser', [
         }
         const authtoken = jwt.sign(data, JWT_SECRET);
         // Send the response
-        res.json({authtoken});
+        res.json({ authtoken });
 
     } catch (error) {
         console.error(error.message);
@@ -52,4 +53,54 @@ router.post('/createuser', [
     }
 });
 
+
+// Router:2 Authenticate a user using POST:"/api/auth/login", No login required.
+router.post('/login', [
+    body('email', 'Enter a valid email ').isEmail(),
+    body('password', 'Password connot be blank ').exists(),
+], async (req, res) => {
+    //if there are Validate no request,return Bad request  and error.
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+    //Using Destructuring method of javascript
+    const { email, password } = req.body;
+    try {
+        //Comparing the Email
+        let user = await User.findOne({ email });
+        if (!user) {
+            return res.status(400).json({ error: "please try to login with correct credential" })
+        }
+        //Comparing the  Password
+        const passwordCompare = await bcrypt.compare(password, user.password);
+        if (!passwordCompare) {
+            return res.status(400).json({ error: "please try to login with correct credential" })
+        }
+        const data = {
+            user: {
+                id: user.id
+            }
+        }
+        const authtoken = jwt.sign(data, JWT_SECRET);
+        res.json({ authtoken })
+    }
+    catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error ")
+    }
+}
+)
+
+// Router:3 Get  a user using POST:"/api/auth/getuser", login required.
+router.post('/getuser', fetchuser, async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const user = await User.findById(userId).select("-password")
+        res.send(user)
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error ")
+    }
+})
 module.exports = router;
