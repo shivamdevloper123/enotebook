@@ -37,24 +37,6 @@
   }
 }
 
-
-/* .row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -1.5rem; /* Negative margin to adjust for gutter */
-  /* margin-left: -1.5rem;
-} */
-
-/* .col-md-3 {
-  flex: 0 0 25%;
-  max-width: 25%;
-  padding-right: 1.5rem; /* Adjust padding to match gutter */
-  /* padding-left: 1.5rem;
-  box-sizing: border-box; */
- /* Keep for debugging */
-/* }
-
-.my-3 {
-  margin-top: 1rem !important;
-  margin-bottom: 1rem !important;
-}  */
+i{
+  cursor: pointer;
+}
