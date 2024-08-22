@@ -6,8 +6,8 @@ function About() {
    
 
   return (
-    <div>
-    This is About page
+    <div className='container align-center-item'style={{marginTop:"80px"}}>
+   <h1> This is About page</h1>
     </div>
   )
 }

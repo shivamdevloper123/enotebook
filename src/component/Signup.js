@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useNavigate} from "react-router-dom"
 
-const Signup = () => {
+const Signup = (props) => {
  try{
   const [credentials, setCredentials] = useState({name:"",email: "", password: ""}) 
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -23,10 +23,11 @@ const Signup = () => {
           // Save the auth token and redirect
           localStorage.setItem('token', json.authtoken); 
           navigate("/");
+props.showAlert("Account Created Successfully",'success')
 
       }
       else{
-          alert("Invalid credentials");
+        props.showAlert("Invalid details","danger");
       }
   } 
     const onChange = (e)=>{
@@ -34,8 +35,8 @@ const Signup = () => {
   }
 
   return (
-    <div className='container'>
-     
+    <div className='container align-center-item'style={{marginTop:"80px"}}>
+     <h2>Create an Account to use eNotebook</h2>
      <form onSubmit={handleSubmit}>
   <div className="mb-3">
     <label htmlFor="name" className="form-label" >Name</label>
