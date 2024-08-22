@@ -13,17 +13,18 @@ router.post('/createuser', [
     body('email', "Enter a valid email").isEmail(),
     body('password', "Password must be at least 5 characters").isLength({ min: 5 }),
 ], async (req, res) => {
-    try {
+    try { 
+        let success = false;
         //if there are Validate no request,return Bad request  and error.
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            return res.status(400).json({success, errors: errors.array() });
         }
 
         // Check if the user already exists
         let user = await User.findOne({ email: req.body.email });
         if (user) {
-            return res.status(400).json({ error: "Sorry, a user with this email already exists" });
+            return res.status(400).json({success, error: "Sorry, a user with this email already exists" });
         }
 
         const salt = await bcrypt.genSalt(10);
@@ -45,7 +46,8 @@ router.post('/createuser', [
         }
         const authtoken = jwt.sign(data, JWT_SECRET);
         // Send the response
-        res.json({ authtoken });
+        success = true;
+        res.json({  success , authtoken });
 
     } catch (error) {
         console.error(error.message);
@@ -59,6 +61,7 @@ router.post('/login', [
     body('email', 'Enter a valid email ').isEmail(),
     body('password', 'Password connot be blank ').exists(),
 ], async (req, res) => {
+    try {
     let success = false;
     //if there are Validate no request,return Bad request  and error.
     const errors = validationResult(req);
@@ -67,7 +70,7 @@ router.post('/login', [
     }
     //Using Destructuring method of javascript
     const { email, password } = req.body;
-    try {
+    
         //Comparing the Email
         let user = await User.findOne({ email });
         if (!user) {
