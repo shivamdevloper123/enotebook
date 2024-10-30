@@ -1,0 +1,43 @@
+assingment/                          
+│   ├── public/                      │   │   └── index.html         
+│   ├── src/                          # Source files    # React components
+│   │   ├── components/             # Pages for routing
+│   │   ├    |-About.js                                # Pages for routing
+│   │   ├    |-AddNote.js                                # Pages for routing
+│   │   ├    |-Alert.js                                # Pages for routing
+│   │   ├    |-Home.js                                # Pages for routing
+│   │   ├    |-Login.js                                # Pages for routing
+│   │   ├    |-Navbar.js                                # Pages for routing
+│   │   ├    |-Noteitem.js                                # Pages for routing
+│   │   ├    |-Notes.js                                # Pages for routing
+│   │   ├    |-Signup.js                                # Pages for routing
+│   │   ├                                          # Pages for routing
+│   │   ├── context/note                            # Pages for routing
+│   │   ├    |-noteContext.js                                # Pages for routing
+│   │   ├    |-NoteState.js                                # Pages for routing
+│   │   ├                                               # Pages for routing
+│   │   ├                                          # Pages for routing
+│   │   ├── App.js                                   # Main app component
+│   │   └── index.js                               # Entry point
+│   ├── package.json                                # Client dependencies
+│   └── .env                                               # Environment variables
+│                         
+├── backend/                                           # Node/Express backend                                   # Configuration files
+│                                          # Controllers for routes
+│   ├── models/                 #                  Controllers for routes
+│   ├     |fetchuser.js                                        # Controllers for routes                      # Mongoose models
+│   ├── routes/                 #                  Controllers for routes
+│   ├     |-auth.js                                        # Controllers for routes                      # Mongoose models
+│   ├     |-notes.js                                        # Controllers for routes                      # Mongoose models
+│   ├                                             # Controllers for routes                      # Mongoose models                                        # Controllers for routes                      # Mongoose models
+│   ├── middleware/                                  # Controllers for routes
+│   ├      |-Notes.js                                        # Controllers for routes                      # Mongoose models
+│   |      |-User.js                       #                  Middleware functions
+│   |                            #                  Middleware functions
+│   ├── index.js                                        # Express app setup
+│   ├── db.js                                        # Express app setup
+│   ├── server.js                                     # Server entry point
+│   └── package.json                                   # Server dependencies
+│                         
+├──                                              
+└── README.md                   #                  Project documentat                 ion

@@ -8,6 +8,7 @@ import About from './component/About';
 import Login from './component/Login';
 import Signup from './component/Signup';
 import NoteState from './context/note/NoteState'
+// import CalendarComponent from './component/CalendarComponent';
 
 function App() {
   const [alert , setAlert] = useState(null);
@@ -22,13 +23,21 @@ function App() {
      setAlert(null)
    }, 2000);
   }
+
+
   return (
+    
    <NoteState>
       <>
+     
+
+
+
         <Router>
           <Navbar />
           <Alert alert={alert}/>
-          <div className="container">
+          <div className="container mt-4">
+         
           <Routes>
             <Route exact path="/" element={<Home showAlert={showAlert}/>} />
             <Route exact path="/about" element={<About  />} />

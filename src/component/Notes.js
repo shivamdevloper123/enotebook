@@ -4,7 +4,9 @@ import Noteitem from './Noteitem';
 import { useNavigate } from "react-router-dom";
 import AddNote from './AddNote';
 
+
 function Notes(props) {
+    
     const context = useContext(noteContext);
     let navigate = useNavigate(); 
     const { notes, getNotes, editNote } = context;
@@ -54,16 +56,17 @@ function Notes(props) {
                         <div className="modal-body">
                             <form className="my-3">
                                 <div className="mb-3">
-                                    <label htmlFor="title" className="form-label">Title</label>
-                                    <input type="text" className="form-control" id="etitle" name="etitle" value={note.etitle} aria-describedby="emailHelp" onChange={onChange} minLength={5} required />
+                                    <label htmlFor="title"  className="form-label">Title</label>
+                                    
+                                    <input type="text" className="form-control" placeholder='title...'  id="etitle" name="etitle" value={note.etitle} aria-describedby="emailHelp" onChange={onChange} minLength={5} required />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="description" className="form-label">Description</label>
-                                    <input type="text" className="form-control" id="edescription" name="edescription" value={note.edescription} onChange={onChange} minLength={5} required />
+                                    <input type="text" placeholder='description...' className="form-control" id="edescription" name="edescription" value={note.edescription} onChange={onChange} minLength={5} required />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="tag" className="form-label">Tag</label>
-                                    <input type="text" className="form-control" id="etag" name="etag" value={note.etag} onChange={onChange} />
+                                    <input type="text" className="form-control" id="etag" name="etag" placeholder='tag...' value={note.etag} onChange={onChange} />
                                 </div>
 
                             </form>
@@ -76,7 +79,7 @@ function Notes(props) {
                 </div>
             </div>
 
-            <div className="row my-3">
+            <div className="row my-2">
                 <h2>Your Notes</h2>
                 <div className="container mx-2">
                     {notes.length === 0 && 'No notes to display'}</div>
