@@ -6,7 +6,7 @@ const app = express()
 const port = 5000; 
 
 app.use(cors({
-origin:"https://enotebook-frontend.vercel.app/"
+origin:"https://enotebook-frontend.vercel.app"
 }))
 app.use(express.json())
 
