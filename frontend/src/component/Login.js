@@ -8,7 +8,7 @@ const Login = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch(`https://enotebook-backend-gamma.vercel.app/api/auth/login`, {
+        const response = await fetch(`https://enotebook-backend-eosin.vercel.app/api/auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
