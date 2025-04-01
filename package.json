@@ -2,14 +2,17 @@
   "name": "enotebook",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {   
-    "backend": "npm start --prefix frontend",
-  "frontend": "npm start --prefix backend",
-     "both": "concurrently \"npm run backend\" \"npm run frontend\"",
+  "scripts": {
+    "backend": "npm run start --prefix frontend",
+    "frontend": "npm run start --prefix backend",
+    "both": "concurrently \"npm run backend\" \"npm run frontend\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "dotenv": "^16.4.7"
+  }
 }

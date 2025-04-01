@@ -3,7 +3,7 @@ const express = require('express')
 var cors = require('cors') 
 connectToMongo();
 const app = express()
-const port = 5000; 
+const port = process.env.PORT; 
 
 app.use(cors({
 // origin:"https://enotebook-frontend.vercel.app"
@@ -15,7 +15,7 @@ app.use('/api/notes', require('./routes/notes'))
 
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Hello World! hi my name is ..')
 })
 
 app.listen(port, () => {
